@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Registro</title>
+  <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/vendor/flatpickr/flatpickr.min.css">
+</head>
+<body class="bg-light">
+
+  <div class="container my-4" style="max-width: 600px;">
+    <h1 class="text-center mb-4">Formulario de Registro</h1>
+
+    <form class="card card-body shadow-sm"
+          action="https://www.w3schools.com/action_page.php"
+          method="post"
+          enctype="multipart/form-data">
+
+      <div class="mb-3">
+        <label for="nombre" class="form-label fw-bold">Nombre *</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="apellido" class="form-label fw-bold">Apellido *</label>
+        <input type="text" class="form-control" id="apellido" name="apellido" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="fecha_nacimiento" class="form-label fw-bold">Fecha de nacimiento *</label>
+        <input type="text" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento"
+               placeholder="Elegí una fecha" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label fw-bold">E-mail *</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="web" class="form-label fw-bold">Página web personal</label>
+        <input type="url" class="form-control" id="web" name="web" placeholder="https://ejemplo.com">
+      </div>
+
+      <div class="mb-3">
+        <label for="telefono" class="form-label fw-bold">Teléfono</label>
+        <input type="tel" class="form-control" id="telefono" name="telefono"
+               placeholder="+54 387 123-4567"
+               pattern="\+54 [0-9]{3,4} [0-9]{3}-[0-9]{4}"
+               title="Formato: +54 387 123-4567">
+      </div>
+
+      <div class="mb-3">
+        <label for="residencia" class="form-label fw-bold">Lugar de residencia *</label>
+        <input type="text" class="form-control" id="residencia" name="residencia" required>
+      </div>
+
+      <div class="mb-3">
+        <span class="form-label fw-bold d-block">Preferencias de publicidad *</span>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" id="semanal" name="publicidad" value="semanal" required>
+          <label class="form-check-label" for="semanal">E-mail semanal</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" id="mensual" name="publicidad" value="mensual">
+          <label class="form-check-label" for="mensual">E-mail mensual</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="radio" id="ninguno" name="publicidad" value="ninguno">
+          <label class="form-check-label" for="ninguno">Ninguno</label>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="imagen" class="form-label fw-bold">Imagen de perfil (jpg o png)</label>
+        <input type="file" class="form-control" id="imagen" name="imagen" accept=".jpg,.jpeg,.png">
+      </div>
+
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="terminos" name="terminos" required>
+        <label class="form-check-label" for="terminos">Acepto los términos y condiciones *</label>
+      </div>
+
+      <div class="mb-3">
+        <label for="color" class="form-label fw-bold">Color favorito</label>
+        <input type="color" class="form-control form-control-color" id="color" name="color" value="#4CAF50">
+      </div>
+
+      <div class="mb-3">
+        <label for="experiencia" class="form-label fw-bold">
+          Experiencia en software libre (0-100): <span id="valor-experiencia">50</span>
+        </label>
+        <input type="range" class="form-range" id="experiencia" name="experiencia" min="0" max="100" value="50">
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label fw-bold">Contraseña * (entre 10 y 60 caracteres)</label>
+        <input type="password" class="form-control" id="password" name="password"
+               minlength="10" maxlength="60" required>
+      </div>
+
+      <div class="text-center mt-3">
+        <button type="submit" class="btn btn-success px-4 me-2">Enviar</button>
+        <button type="reset" class="btn btn-danger px-4">Resetear</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/vendor/imask/imask.min.js"></script>
+  <script src="/vendor/flatpickr/flatpickr.min.js"></script>
+  <script src="/vendor/flatpickr/l10n/es.js"></script>
+  <script>
+    // Valor del range en tiempo real
+    const range = document.getElementById('experiencia');
+    const valor = document.getElementById('valor-experiencia');
+    range.addEventListener('input', function () {
+      valor.textContent = this.value;
+    });
+
+    // Datepicker (flatpickr) en español, sin fechas futuras
+    flatpickr('#fecha_nacimiento', {
+      locale: 'es',
+      dateFormat: 'Y-m-d',
+      altInput: true,
+      altFormat: 'd/m/Y',
+      maxDate: 'today'
+    });
+
+    // Máscara de teléfono (imask)
+    IMask(document.getElementById('telefono'), {
+      mask: '+54 000 000-0000'
+    });
+  </script>
+</body>
+</html>
