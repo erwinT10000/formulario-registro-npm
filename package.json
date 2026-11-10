@@ -1,0 +1,17 @@
+{
+  "name": "formulario-registro-npm",
+  "version": "1.0.0",
+  "description": "Formulario de registro (Semana 4) migrado a un proyecto Node.js con NPM",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Erwin Dante Torres Farfán",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "express": "^5.3.0",
+    "flatpickr": "^4.6.13",
+    "imask": "^7.6.1"
+  }
+}
